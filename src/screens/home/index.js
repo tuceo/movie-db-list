@@ -5,6 +5,7 @@ import {Spinner} from "react-bootstrap";
 import MovieList from "../../components/MovieList";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
+import {REACT_APP_API_URL} from "../../App";
 
 const Home = () => {
     const [movies, setMovies] = useState(null);
@@ -23,7 +24,7 @@ const Home = () => {
         setIsLoading(true);
 
         axios
-            .get(`${process.env.REACT_APP_API_URL} + ${(s ? "&s=" + s : "") + (y ? "&y=" + y : "") + (type ? "&type=" + type : "") + (page ? "&page=" + page : "")}`)
+            .get(`${REACT_APP_API_URL} + ${(s ? "&s=" + s : "") + (y ? "&y=" + y : "") + (type ? "&type=" + type : "") + (page ? "&page=" + page : "")}`)
             .then((res) => {
                 setTotalPage(res?.data?.totalResults > 10 ? res?.data?.totalResults / 10 : 1);
                 setMovies(res?.data?.Search)

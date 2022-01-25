@@ -5,6 +5,7 @@ import {Button, Spinner} from "react-bootstrap";
 import Layout from "../../components/Layout";
 import MovieDetails from "../../components/MovieDetails";
 import Header from "../../components/Header";
+import {REACT_APP_API_URL} from "../../App";
 
 const Detail = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +18,7 @@ const Detail = () => {
     useEffect(() => {
         if (imdbID) {
             axios
-                .get(`${process.env.REACT_APP_API_URL}&i=${imdbID}`)
+                .get(`${REACT_APP_API_URL}&i=${imdbID}`)
                 .then((res) => {
                     setMovie(res?.data)
                 })
