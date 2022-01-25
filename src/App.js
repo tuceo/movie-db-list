@@ -4,8 +4,6 @@ import {Spinner} from "react-bootstrap";
 import Home from "./screens/home";
 import Detail from "./screens/detail";
 
-export const REACT_APP_API_URL="http://www.omdbapi.com/?apikey=5aca88ba"
-
 function App() {
 
     return (
