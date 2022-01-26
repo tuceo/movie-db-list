@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Filters from "../../components/Filters";
 import {Spinner} from "react-bootstrap";
-import MovieList from "../../components/MovieList";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
+import MovieList from "../../components/MovieList";
 
 const Home = () => {
     const [movies, setMovies] = useState(null);
@@ -25,7 +25,7 @@ const Home = () => {
         axios
             .get(`${process.env.REACT_APP_API_URL} + ${(s ? "&s=" + s : "") + (y ? "&y=" + y : "") + (type ? "&type=" + type : "") + (page ? "&page=" + page : "")}`)
             .then((res) => {
-                setTotalPage(res?.data?.totalResults > 10 ? res?.data?.totalResults / 10 : 1);
+                setTotalPage(Math.ceil(res?.data?.totalResults / 10));
                 setMovies(res?.data?.Search)
             })
             .catch((err) => console.error(err))
